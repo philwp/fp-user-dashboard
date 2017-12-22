@@ -14,6 +14,8 @@ Domain Path: /languages
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
+use tcsl\dashboard\Meta;
+
 
 define( 'FP_USER_DASHBOARD_PATH', dirname( __FILE__ ) );
 define( 'FP_USER_DASHBOARD_URL', plugin_dir_url(__FILE__ ) );
@@ -62,6 +64,8 @@ function fp_user_dashboard_bootstrap(){
 function fp_user_dashboard_notice_load_plugin_textdomain() {
 	load_plugin_textdomain( 'fp-user-dashboard', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
+
+
 
 
 

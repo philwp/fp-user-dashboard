@@ -10,11 +10,9 @@ class Start {
 	const POST_TYPE = 'tcsl_member';
 
 	public function __construct() {
-		if( is_admin() ) {
-			$this->start_admin();
-		}
 		add_action( 'woocommerce_thankyou', [ $this , 'add_members' ] );
 		add_action( 'woocommerce_after_my_account', [ $this, 'run_dashboard' ] );
+		$this->add_cmb2();
 	}
 
 	protected function start_admin() {
@@ -23,7 +21,7 @@ class Start {
 
 	protected function add_cmb2(){
 		$editor = new Editor();
-		add_action( 'cmb2_admin_init', [ $editor, 'run' ] );
+		add_action( 'cmb2_init', [ $editor, 'run' ] );
 	}
 
 	public function add_members( $order_id ) {

@@ -75,7 +75,17 @@ class Editor {
 		$this->cmb2->add_field( [
 			'name' => 'Race',
 			'id'   => Meta::RACE,
-			'type' => 'text_small',
+			'type' => 'select',
+			'options' => [
+				'African American' 	=> 'African American',
+				'Native American'	=> 'Native American',
+				'Latino' 			=> 'Latino',
+				'Asian' 			=> 'Asian',
+				'Indian' 			=> 'Indian',
+				'Caucasian' 		=> 'Caucasian',
+				'European'			=> 'European',
+				'Other'				=> 'Other'
+				],
 		] );
 		$this->cmb2->add_field( [
 			'name' => 'Age',

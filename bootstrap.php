@@ -1,6 +1,8 @@
 <?php
 
 use tcsl\dashboard\Start;
+use tcsl\dashboard\Meta;
+
 /**
  * Register Autoloader
  */
@@ -29,30 +31,27 @@ add_action( 'init', function(){
 }, 3 );
 
 
+
 /**
  * Includes
  */
 
 include FP_USER_DASHBOARD_PATH . '/includes/add-woo-templates.php';
-// $post = '2664';
 
-// $events_from_order = get_post_meta( $post, '_tribe_tickets_meta', true );
+add_filter( 'template_include', 'portfolio_page_template', 99 );
 
-// foreach ($events_from_order as $event_from_order ) {
+function portfolio_page_template( $template ) {
 
-// 	foreach( $event_from_order as $event_data ) {
-// 		$email =  $event_data['email'];
+	if ( is_page( 'edit-member' )  ) {
 
-// 		if ( email_exists( $email ) ) {
+		$new_template = FP_USER_DASHBOARD_PATH . '/templates/edit-member.php';
+		if ( '' != $new_template ) {
+			return $new_template;
+		}
+	}
 
-// 			//var_dump('User Exists');
-// 		} else {
-// 			//add user to Database
-// 		}
-// 	}
-// }
-
-// //exit;
+	return $template;
+}
 
 // Register Custom Post Type
 function tcsl_member_cpt() {
@@ -90,7 +89,8 @@ function tcsl_member_cpt() {
 		'label'                 => 'Member',
 		'description'           => 'Post Type Description',
 		'labels'                => $labels,
-		'supports'              => array( 'revisions' ),
+		'supports'              => array( 'revisions', 'author' ),
+		'menu_icon'           	=> 'dashicons-groups',
 		'hierarchical'          => false,
 		'public'                => false,
 		'show_ui'               => true,
@@ -121,4 +121,12 @@ function tcsl_member_load_cmb2(){
 	include_once  __DIR__ . '/includes/CMB2/init.php';
 }
 
+add_filter( 'post_row_actions', 'tcsl_remove_cpt_view', 10, 1 );
 
+function tcsl_remove_cpt_view( $actions ) {
+    if( get_post_type() === Start::POST_TYPE ) {
+    	unset( $actions['view'] );
+    }
+
+    return $actions;
+}
