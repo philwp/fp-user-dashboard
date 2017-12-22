@@ -13,6 +13,9 @@ class Start {
 		add_action( 'woocommerce_thankyou', [ $this , 'add_members' ] );
 		add_action( 'woocommerce_after_my_account', [ $this, 'run_dashboard' ] );
 		$this->add_cmb2();
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue' ] );
+		}
 	}
 
 	protected function start_admin() {
@@ -32,5 +35,11 @@ class Start {
 
 	public function run_dashboard() {
 		new Dashboard();
+	}
+
+	public function admin_enqueue() {
+
+		wp_enqueue_script( 'tcsl-js', FP_USER_DASHBOARD_URL . '/dist/bundle.js', [], true );
+		
 	}
 }

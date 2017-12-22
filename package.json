@@ -1,0 +1,30 @@
+{
+  "name": "fp-user-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philwp/fp-user-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philwp/fp-user-dashboard/issues"
+  },
+  "homepage": "https://github.com/philwp/fp-user-dashboard#readme",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "vue": "^2.5.13",
+    "vue-loader": "^13.6.1",
+    "vue-template-compiler": "^2.5.13"
+  }
+}

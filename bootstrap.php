@@ -37,6 +37,7 @@ add_action( 'init', function(){
  */
 
 include FP_USER_DASHBOARD_PATH . '/includes/add-woo-templates.php';
+include FP_USER_DASHBOARD_PATH . '/includes/add-lab-stats-menu.php';
 
 add_filter( 'template_include', 'portfolio_page_template', 99 );
 
